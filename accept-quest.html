@@ -1,0 +1,42 @@
+<script type="text/javascript">
+    RED.nodes.registerType('habitica-accept-quest', {
+        category: 'Habitica',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: ''},
+            apiAccount: {value: '', type: 'habitica-account', required: true},
+            account: {value: '', type: 'habitica-account', required: true},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: 'file.png',
+        label: function() {
+            return this.name || 'Habitica: Accepting quest';
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="habitica-accept-quest">
+    <div class="form-row">
+        <label for="node-input-name">
+            <i class="fa fa-tag"></i> Name
+        </label>
+        <input type="text" id="node-input-name" placeholder="Name" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-apiAccount">
+            <i class="fa fa-tag"></i> API Account
+        </label>
+        <input type="text" id="node-input-apiAccount" placeholder="API Account" />
+    </div>
+    <div class="form-row">
+        <label for="node-input-account">
+            <i class="fa fa-tag"></i> Account
+        </label>
+        <input type="text" id="node-input-account" placeholder="Account" />
+    </div>
+</script>
+
+<script type="text/html" data-help-name="habitica-accept-quest">
+    <p>Accept pending quest from the Habitica API.</p>
+</script>
