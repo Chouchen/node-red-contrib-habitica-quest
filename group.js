@@ -40,7 +40,7 @@ module.exports = RED => {
                     response = JSON.parse(body);
 
                     if (response.success) {
-                        msg.payload = response.data;
+                        msg.payload = {...response.data, ...{"userId": node.account.userId}};
                         node.send(msg);
                         node.status({fill: 'green', shape: 'dot', text: 'Group retrieved'});
                     }
