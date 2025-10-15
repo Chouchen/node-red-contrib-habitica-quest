@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-habitica-quest",
   "description": "NodeRED plugin to provide nodes for interacting with the Habitica API.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Clément Desmidt <projets@shiki.fr>",
   "license": "MIT",
   "keywords": [

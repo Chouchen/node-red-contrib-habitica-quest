@@ -1,7 +1,7 @@
 const https = require('https');
 
 module.exports = RED => {
-    function UserProfileNode(config) {
+    function AcceptQuestNode(config) {
         const node = this;
 
         RED.nodes.createNode(node, config);
@@ -17,21 +17,20 @@ module.exports = RED => {
 
         node.on('input', async function(msg) {
 
-            const group_id = 'party';
-
             const opts = {
                 host: 'habitica.com',
-                path: `/api/v3/groups/${group_id}/quests/accept`,
+                path: '/api/v3/groups/party/quests/accept',
                 headers: {
                     'X-Client': `${node.apiAccount.username}-NodeRED`,
                     'X-API-User': node.account.userId,
                     'X-API-Key': node.account.apiToken,
                 },
+                method: 'POST'
             };
 
-            https.get(opts, req => {
+            const request = https.request(opts, req => {
                 req.setEncoding('utf-8');
-
+                
                 let body = '',
                     response = null;
 
@@ -52,8 +51,10 @@ module.exports = RED => {
                     }
                 });
             }).on('error', err => handleErr(err));
+            
+            request.end();
         });
     }
 
-    RED.nodes.registerType('habitica-accept-quest', UserProfileNode);
+    RED.nodes.registerType('habitica-accept-quest', AcceptQuestNode);
 };

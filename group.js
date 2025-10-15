@@ -1,7 +1,7 @@
 const https = require('https');
 
 module.exports = RED => {
-    function UserProfileNode(config) {
+    function GroupNode(config) {
         const node = this;
 
         RED.nodes.createNode(node, config);
@@ -52,5 +52,5 @@ module.exports = RED => {
         });
     }
 
-    RED.nodes.registerType('habitica-group', UserProfileNode);
+    RED.nodes.registerType('habitica-group', GroupNode);
 };
