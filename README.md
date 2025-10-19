@@ -8,6 +8,7 @@
 
 TODO
 
-## REST API
+## Sources
 
-TODO
+* [API Doc](https://habitica.com/apidoc/#api-Quest-AcceptQuest)
+* [Inspiration](https://github.com/chimericdream/node-red-contrib-habitica-link)

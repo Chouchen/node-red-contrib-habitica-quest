@@ -25,7 +25,12 @@ module.exports = RED => {
                     'X-API-User': node.account.userId,
                     'X-API-Key': node.account.apiToken,
                 },
-                method: 'POST'
+                method: 'POST',
+                'User-Agent': 'NodeRedAgent/0.0.2',
+                'Accept': '*/*',
+                'Content-Type': 'json/application',
+                'Accept-Encoding': 'gzip, deflate, br',
+                'Connection': 'keep-alive',
             };
 
             const request = https.request(opts, req => {

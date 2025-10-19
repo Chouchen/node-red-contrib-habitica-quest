@@ -1,0 +1,137 @@
+[
+  {
+    "id": "017d718aba622612",
+    "type": "tab",
+    "label": "Habitica: auto accept",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "982cc1986765afb8",
+    "type": "inject",
+    "z": "017d718aba622612",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      }
+    ],
+    "repeat": "1800",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 130,
+    "y": 320,
+    "wires": [
+      [
+        "f8879a06dbe07838"
+      ]
+    ]
+  },
+  {
+    "id": "f8879a06dbe07838",
+    "type": "habitica-group",
+    "z": "017d718aba622612",
+    "name": "",
+    "apiAccount": "",
+    "account": "",
+    "fields": "",
+    "x": 320,
+    "y": 320,
+    "wires": [
+      [
+        "c964b2062a75d620"
+      ]
+    ]
+  },
+  {
+    "id": "08bd2f749f0e489a",
+    "type": "habitica-accept-quest",
+    "z": "017d718aba622612",
+    "name": "Habitica: Accept Quest",
+    "apiAccount": "",
+    "account": "",
+    "x": 1140,
+    "y": 320,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "c964b2062a75d620",
+    "type": "function",
+    "z": "017d718aba622612",
+    "name": "Check if user can accept",
+    "func": "const data = msg.payload;\n\nif (data.quest.key && !data.quest.active && !data.quest.members[data.userId]) {\n    return msg;\n}\n\nmsg.payload = false;\n\nreturn msg;",
+    "outputs": 1,
+    "timeout": 0,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 570,
+    "y": 320,
+    "wires": [
+      [
+        "fddc15c394b67ec2"
+      ]
+    ]
+  },
+  {
+    "id": "fddc15c394b67ec2",
+    "type": "switch",
+    "z": "017d718aba622612",
+    "name": "1 if false, 2 if user can accept",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "false"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "x": 840,
+    "y": 320,
+    "wires": [
+      [
+        "5c252d1abe3f8d96"
+      ],
+      [
+        "08bd2f749f0e489a"
+      ]
+    ]
+  },
+  {
+    "id": "5c252d1abe3f8d96",
+    "type": "debug",
+    "z": "017d718aba622612",
+    "name": "debug 2",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 840,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "d632da7eef521402",
+    "type": "global-config",
+    "env": [],
+    "modules": {
+      "node-red-contrib-habitica-quest": "0.0.3"
+    }
+  }
+]
