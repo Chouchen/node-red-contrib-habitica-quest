@@ -131,7 +131,7 @@
     "type": "global-config",
     "env": [],
     "modules": {
-      "node-red-contrib-habitica-quest": "0.0.3"
+      "node-red-contrib-habitica-quest": "0.0.4"
     }
   }
 ]

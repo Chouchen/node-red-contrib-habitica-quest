@@ -1,7 +1,7 @@
 {
   "name": "node-red-contrib-habitica-quest",
   "description": "NodeRED plugin to provide nodes for interacting with the Habitica API.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Clément Desmidt <projets@shiki.fr>",
   "license": "MIT",
   "keywords": [
@@ -31,9 +31,9 @@
   },
   "node-red": {
     "nodes": {
-      "habitica-account": "habitica-account.js",
-      "habitica-group": "group.js",
-      "habitica-accept-quest": "accept-quest.js"
+      "habitica-account": "src/habitica-account.js",
+      "habitica-group": "src/group.js",
+      "habitica-accept-quest": "src/accept-quest.js"
     }
   }
 }
